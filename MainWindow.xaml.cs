@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System.Net.Http;
+using System.Transactions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -75,35 +76,52 @@ namespace VNRO_Login
 
         private async void btnStartGame_Click(object sender, RoutedEventArgs e)
         {
-            if(!string.IsNullOrEmpty(txtUsername.Text) && !string.IsNullOrEmpty(txtPassword.Password))
-            {
-                btnStartGame.IsEnabled = false;
+            try { 
+                if(!string.IsNullOrEmpty(txtUsername.Text) && !string.IsNullOrEmpty(txtPassword.Password))
+                {
+                    btnStartGame.IsEnabled = false;
 
-                // Save username and exe path to config
-                VNROLogin.Default.Username = txtUsername.Text;
-                VNROLogin.Default.RagexePath = txtRagexePath.Text;
-                VNROLogin.Default.Save();
+                    // Save username and exe path to config
+                    VNROLogin.Default.Username = txtUsername.Text;
+                    VNROLogin.Default.RagexePath = txtRagexePath.Text;
+                    VNROLogin.Default.Save();
 
-                string username = txtUsername.Text;
-                string password = txtPassword.Password;
+                    string username = txtUsername.Text;
+                    string password = txtPassword.Password;
                 
 
-                // Start request to VTC API
-                var loginResponse = await VtcService.loginAsync(username, password);
-                if (loginResponse == null)
-                {
-                    MessageBox.Show("Không request được đến API của VTC vui lòng thử lại sau");
-                }
-                string? accessToken = loginResponse?.info?.accessToken;
-                string? billingToken = loginResponse?.info?.billingAccessToken;
+                    // Start request to VTC API
+                    var loginResponse = await VtcService.loginAsync(username, password);
+                    if (loginResponse == null)
+                    {
+                        MessageBox.Show("Không request được đến API của VTC vui lòng thử lại sau");
+                        return;
+                    }
 
-                VtcService.StartGame(txtRagexePath.Text, username, accessToken, billingToken);
+                    if (loginResponse.error != 200)
+                    {
+                        MessageBox.Show(loginResponse.message);
+                        return;
+                    }
+
+                    string? accessToken = loginResponse?.info?.accessToken;
+                    string? billingToken = loginResponse?.info?.billingAccessToken;
+
+                    VtcService.StartGame(txtRagexePath.Text, username, accessToken, billingToken);
+                }
+                else
+                {
+                    MessageBox.Show("Chưa nhập username hoặc password");
+                }
+            } 
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi không xác định, vui lòng thử lại");
+            }
+            finally
+            {
                 btnStartGame.IsEnabled = true;
             }
-            else
-            {
-                MessageBox.Show("Chưa nhập username hoặc password");
-            }    
         }
 
         private void btnClose_MouseUp(object sender, MouseButtonEventArgs e)

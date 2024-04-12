@@ -27,7 +27,6 @@ namespace VNRO_Login
             // Start request to VTC API
             string requestUrl = String.Format(VTC_LOGIN_API, username, hashedPassword, CLIENT_ID, CLIENT_SECRET);
             var response = await httpClient.GetFromJsonAsync<VtcLoginResponse>(requestUrl);
-            
             return response;
         }
 

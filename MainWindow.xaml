@@ -35,7 +35,7 @@
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Image Source="/img/user.png" Height="20" />
+                        <Image Source="/img/user.png" Height="20" Opacity="0.5"/>
                         <TextBlock x:Name="textUsername" MouseDown="textUsername_MouseDown" Text="Tên tài khoản VTC Game" Style="{StaticResource textHint}"/>
                         <TextBox x:Name="txtUsername" TextChanged="txtUsername_TextChanged" Style="{StaticResource textBox}"/>
                     </Grid>
@@ -46,7 +46,7 @@
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Image Source="/img/padlock.png" Height="20" />
+                        <Image Source="/img/padlock.png" Height="20"  Opacity="0.5"/>
                         <TextBlock x:Name="textPassword" MouseDown="textPassword_MouseDown" Text="Mật khẩu" Style="{StaticResource textHint}"/>
                         <PasswordBox x:Name="txtPassword" PasswordChanged="txtPassword_PasswordChanged" Style="{StaticResource textBox}"/>
                     </Grid>
@@ -57,13 +57,13 @@
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Image Source="/img/folder.png" Height="20" />
+                        <Image Source="/img/folder.png" Height="20"  Opacity="0.8" />
                         <Button x:Name="btnRagexeSelect" Click="btnRagexeSelect_Click" Panel.ZIndex="3" Content="Chọn" Grid.Column="1" Style="{StaticResource buttonSelect}" HorizontalAlignment="Right"/>
                         <TextBlock x:Name="textRagexePath" Text="Chọn file Ragexe.exe hoặc Ragnarok.exe" Panel.ZIndex="1" Style="{StaticResource textHint}"/>
                         <TextBox x:Name="txtRagexePath" TextChanged="txtRagexePath_TextChanged" Style="{StaticResource textBox}"/>
                     </Grid>
                 </Border>
-                <Button x:Name="btnStartGame" Click="btnStartGame_Click" Style="{StaticResource button}" Margin="0 10 0 0">START GAME</Button>
+                <Button x:Name="btnStartGame" IsDefault="True" Click="btnStartGame_Click" Style="{StaticResource button}" Margin="0 10 0 0">START GAME</Button>
             </StackPanel>
         </Border>
     </Grid>

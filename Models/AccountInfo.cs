@@ -4,7 +4,7 @@
     {
         public string? accessToken { get; set; }
         public string? billingAccessToken { get; set; }
-        public long expiration { get; set; }
+        public long? expiration { get; set; }
         public string? accountId { get; set; }
         public string? accountName { get; set; }
         public string? userStatus { get; set; }
