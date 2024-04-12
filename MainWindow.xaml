@@ -1,0 +1,70 @@
+﻿<Window x:Class="VNRO_Login.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VNRO_Login"
+        mc:Ignorable="d"
+        Title="VNRO Login By LTA" Height="400" Width="600" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="Transparent" Icon="/img/1361.png">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.5*"/>
+        </Grid.ColumnDefinitions>
+        <Image x:Name="btnClose" Source="/img/close.png" Panel.ZIndex="1" Grid.Column="1" MouseUp="btnClose_MouseUp" Style="{StaticResource imgClose}" />
+        <Border CornerRadius="10 0 0 10" MouseDown="Border_MouseDown">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#3AA9DA" Offset="0"/>
+                    <GradientStop Color="#3AADA1" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <StackPanel>
+                <TextBlock Text="VNRO Login" Style="{StaticResource titleText}" Margin="0,40,0,0" />
+                <TextBlock Text="by LTA" Style="{StaticResource authorText}" Opacity="0.8" Margin="0,0,10,20" />
+                <Image Source="/img/Super Novice.png" />
+            </StackPanel>
+
+        </Border>
+        <Border Background="#fff" Grid.Column="1" CornerRadius="0 10 10 0" MouseDown="Border_MouseDown">
+            <StackPanel VerticalAlignment="Center">
+                <Image Source="/img/vnro_logo.png" Height="70" Margin="0,0,0,20" />
+                <Border BorderThickness="1" BorderBrush="#acb0af" Margin="20 7" CornerRadius="5">
+                    <Grid Margin="7 9">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/img/user.png" Height="20" />
+                        <TextBlock x:Name="textUsername" MouseDown="textUsername_MouseDown" Text="Tên tài khoản VTC Game" Style="{StaticResource textHint}"/>
+                        <TextBox x:Name="txtUsername" TextChanged="txtUsername_TextChanged" Style="{StaticResource textBox}"/>
+                    </Grid>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="#acb0af" Margin="20 7" CornerRadius="5">
+                    <Grid Margin="7 9">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/img/padlock.png" Height="20" />
+                        <TextBlock x:Name="textPassword" MouseDown="textPassword_MouseDown" Text="Mật khẩu" Style="{StaticResource textHint}"/>
+                        <PasswordBox x:Name="txtPassword" PasswordChanged="txtPassword_PasswordChanged" Style="{StaticResource textBox}"/>
+                    </Grid>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="#acb0af" Margin="20 7" CornerRadius="5">
+                    <Grid Margin="7 9">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/img/folder.png" Height="20" />
+                        <Button x:Name="btnRagexeSelect" Click="btnRagexeSelect_Click" Panel.ZIndex="3" Content="Chọn" Grid.Column="1" Style="{StaticResource buttonSelect}" HorizontalAlignment="Right"/>
+                        <TextBlock x:Name="textRagexePath" Text="Chọn file Ragexe.exe hoặc Ragnarok.exe" Panel.ZIndex="1" Style="{StaticResource textHint}"/>
+                        <TextBox x:Name="txtRagexePath" TextChanged="txtRagexePath_TextChanged" Style="{StaticResource textBox}"/>
+                    </Grid>
+                </Border>
+                <Button x:Name="btnStartGame" Click="btnStartGame_Click" Style="{StaticResource button}" Margin="0 10 0 0">START GAME</Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
