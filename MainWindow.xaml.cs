@@ -1,9 +1,5 @@
 ﻿using Microsoft.Win32;
-using System.Diagnostics;
 using System.Net.Http;
-using System.Net.Http.Json;
-using System.Security.Cryptography;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -15,15 +11,9 @@ namespace VNRO_Login
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly HttpClient httpClient;
-        private readonly string CLIENT_ID = "2aa32a67b771fcab4fd501273ef8b744";
-        private readonly string CLIENT_SECRET = "9ecf8255d241f5e702714734e3a93afb";
-        private readonly string VTC_LOGIN_API = "http://apisdk.vtcgame.vn/sdk/login?username={0}&password={1}&client_id={2}&client_secret={3}&grant_type=password&authen_type=0&device_type=1";
-
         public MainWindow()
         {
             InitializeComponent();
-            httpClient = new HttpClient();
         }
 
         private void textUsername_MouseDown(object sender, MouseButtonEventArgs e)
