@@ -9,7 +9,7 @@
     <UseWPF>true</UseWPF>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PackageIcon>1361.png</PackageIcon>
+    <PackageIcon></PackageIcon>
     <PackageId>VNROLogin</PackageId>
     <Title>VNRO Login</Title>
   </PropertyGroup>
@@ -26,13 +26,6 @@
 
   <ItemGroup>
     <Content Include="favicon.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="C:\Users\User\Desktop\1361.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -60,6 +53,21 @@
     <Resource Include="img\vnro_logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="VNROLogin.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>VNROLogin.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="VNROLogin.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>VNROLogin.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>

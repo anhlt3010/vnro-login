@@ -14,6 +14,8 @@ namespace VNRO_Login
         public MainWindow()
         {
             InitializeComponent();
+            txtUsername.Text = VNROLogin.Default.Username;
+            txtRagexePath.Text = VNROLogin.Default.RagexePath;
         }
 
         private void textUsername_MouseDown(object sender, MouseButtonEventArgs e)
@@ -76,6 +78,12 @@ namespace VNRO_Login
             if(!string.IsNullOrEmpty(txtUsername.Text) && !string.IsNullOrEmpty(txtPassword.Password))
             {
                 btnStartGame.IsEnabled = false;
+
+                // Save username and exe path to config
+                VNROLogin.Default.Username = txtUsername.Text;
+                VNROLogin.Default.RagexePath = txtRagexePath.Text;
+                VNROLogin.Default.Save();
+
                 string username = txtUsername.Text;
                 string password = txtPassword.Password;
                 
@@ -111,6 +119,8 @@ namespace VNRO_Login
             if (success == true)
             {
                 txtRagexePath.Text = openFileDialog.FileName;
+                VNROLogin.Default.RagexePath = txtRagexePath.Text;
+                VNROLogin.Default.Save();
             }
         }
     }
