@@ -29,41 +29,60 @@
         <Border Background="#fff" Grid.Column="1" CornerRadius="0 10 10 0" MouseDown="Border_MouseDown">
             <StackPanel VerticalAlignment="Center">
                 <Image Source="/img/vnro_logo.png" Height="70" Margin="0,0,0,20" />
-                <Border BorderThickness="1" BorderBrush="#acb0af" Margin="20 7" CornerRadius="5">
-                    <Grid Margin="7 9">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Image Source="/img/user.png" Height="20" Opacity="0.5"/>
-                        <TextBlock x:Name="textUsername" MouseDown="textUsername_MouseDown" Text="Tên tài khoản VTC Game" Style="{StaticResource textHint}"/>
-                        <TextBox x:Name="txtUsername" TextChanged="txtUsername_TextChanged" Style="{StaticResource textBox}"/>
-                    </Grid>
-                </Border>
-                <Border BorderThickness="1" BorderBrush="#acb0af" Margin="20 7" CornerRadius="5">
-                    <Grid Margin="7 9">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Image Source="/img/padlock.png" Height="20"  Opacity="0.5"/>
-                        <TextBlock x:Name="textPassword" MouseDown="textPassword_MouseDown" Text="Mật khẩu" Style="{StaticResource textHint}"/>
-                        <PasswordBox x:Name="txtPassword" PasswordChanged="txtPassword_PasswordChanged" Style="{StaticResource textBox}"/>
-                    </Grid>
-                </Border>
-                <Border BorderThickness="1" BorderBrush="#acb0af" Margin="20 7" CornerRadius="5">
-                    <Grid Margin="7 9">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Image Source="/img/folder.png" Height="20"  Opacity="0.8" />
-                        <Button x:Name="btnRagexeSelect" Click="btnRagexeSelect_Click" Panel.ZIndex="3" Content="Chọn" Grid.Column="1" Style="{StaticResource buttonSelect}" HorizontalAlignment="Right"/>
-                        <TextBlock x:Name="textRagexePath" Text="Chọn file Ragexe.exe hoặc Ragnarok.exe" Panel.ZIndex="1" Style="{StaticResource textHint}"/>
-                        <TextBox x:Name="txtRagexePath" TextChanged="txtRagexePath_TextChanged" Style="{StaticResource textBox}"/>
-                    </Grid>
-                </Border>
-                <Button x:Name="btnStartGame" IsDefault="True" Click="btnStartGame_Click" Style="{StaticResource button}" Margin="0 10 0 0">START GAME</Button>
+                <StackPanel x:Name="panelLogin">
+                    <Border BorderThickness="1" BorderBrush="#acb0af" Margin="20 7" CornerRadius="5">
+                        <Grid Margin="7 9">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="/img/user.png" Height="20" Opacity="0.5"/>
+                            <TextBlock x:Name="textUsername" MouseDown="textUsername_MouseDown" Text="Tên tài khoản VTC Game" Style="{StaticResource textHint}"/>
+                            <TextBox x:Name="txtUsername" TextChanged="txtUsername_TextChanged" Style="{StaticResource textBox}"/>
+                        </Grid>
+                    </Border>
+                    <Border BorderThickness="1" BorderBrush="#acb0af" Margin="20 7" CornerRadius="5">
+                        <Grid Margin="7 9">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="/img/padlock.png" Height="20"  Opacity="0.5"/>
+                            <TextBlock x:Name="textPassword" MouseDown="textPassword_MouseDown" Text="Mật khẩu" Style="{StaticResource textHint}"/>
+                            <PasswordBox x:Name="txtPassword" PasswordChanged="txtPassword_PasswordChanged" Style="{StaticResource textBox}"/>
+                        </Grid>
+                    </Border>
+                    <Border BorderThickness="1" BorderBrush="#acb0af" Margin="20 7" CornerRadius="5">
+                        <Grid Margin="7 9">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="/img/folder.png" Height="20"  Opacity="0.8" />
+                            <Button x:Name="btnRagexeSelect" Click="btnRagexeSelect_Click" Panel.ZIndex="3" Content="Chọn" Grid.Column="1" Style="{StaticResource buttonSelect}" HorizontalAlignment="Right"/>
+                            <TextBlock x:Name="textRagexePath" Text="Chọn thư mục game Ragnarok" Panel.ZIndex="1" Style="{StaticResource textHint}"/>
+                            <TextBox x:Name="txtRagexePath" TextChanged="txtRagexePath_TextChanged" Style="{StaticResource textBox}"/>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+                <StackPanel x:Name="panelInfo" Visibility="Collapsed">
+                    <StackPanel Margin="20 7">
+                        <WrapPanel>
+                            <Label Content="Xin chào " />
+                            <Label x:Name="lblAccountName" Content="Username" Margin="0" Foreground="Red"/>
+                            <Label Content="Bạn đã login, chơi game luôn chứ?" />
+                        </WrapPanel>
+                    </StackPanel>
+                    <StackPanel Margin="20 7">
+                        <Label>
+                            <TextBlock x:Name="textLogout" Foreground="#FF0C74FF" TextDecorations="Underline" Cursor="Hand" PreviewMouseDown="textLogout_PreviewMouseDown">Logout</TextBlock>
+                        </Label>
+                    </StackPanel>
+                </StackPanel>
+                <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button x:Name="btnStartLauncher" Click="btnStartLauncher_Click" Style="{StaticResource button}" Margin="0 10 10 0" Content="Mở Launcher"/>
+                    <Button x:Name="btnStartGame" IsDefault="True" Click="btnStartGame_Click" Style="{StaticResource button}" Margin="10 10 0 0" Content="Vào Game"/>
+                </WrapPanel>
             </StackPanel>
         </Border>
     </Grid>
